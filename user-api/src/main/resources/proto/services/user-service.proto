@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "models/user.proto";
+
+package ru.mai.user.proto;
+
+service UserService {
+  rpc CreateUser(ru.mai.user.proto.CreateUserRequest) returns (ru.mai.user.proto.CreateUserResponse);
+  rpc GetUserData(ru.mai.user.proto.GetUserDataRequest) returns (ru.mai.user.proto.GetUserDataResponse);
+}

@@ -1,0 +1,119 @@
+server:
+  shutdown: graceful
+
+spring:
+  grpc:
+    server:
+      port:
+        9090
+    client:
+      analytic:
+        address: dns://localhost:9091
+        negotiation-type: plaintext
+  application.name: mai-user
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:25432/usersvc
+    username: user
+    password: password
+    primary:
+      hikari:
+        maximum-pool-size: 4
+        pool-name: Primary
+        leak-detection-threshold: 20000
+        connection-timeout: 5000
+        validation-timeout: 2000
+        data-source-properties:
+          ApplicationName: ${spring.application.name}
+      liquibase:
+        enabled: true
+        liquibase-schema: "user"
+        change-log: classpath:db/changelog/db.changelog-master.yaml
+  transaction.default-timeout: 120s
+  task:
+    scheduling:
+      pool:
+        size: 12
+      shutdown:
+        await-termination: true
+        await-termination-period: 5m
+  main:
+    banner-mode: log
+  mvc:
+    dispatch-trace-request: true
+
+management:
+  endpoints:
+    web.exposure.include: '*'
+  endpoint:
+    metrics.enabled: true
+    prometheus.enabled: true
+    shutdown.enabled: true
+    restart.enabled: true
+    health:
+      show-details: always
+      probes.enabled: true
+      group:
+        readiness:
+          include: "readinessState,db"
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  tracing:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.zalando.logbook: TRACE
+
+kafka-ssl:
+  bootstrap-servers: 127.0.0.1:9092
+  schema-registry-url: http://127.0.0.1:8081
+  properties:
+    cluster-id: localhost
+  consumers:
+    common:
+      auto-offset-reset: earliest
+      auto-commit: false
+    receipt:
+      topic: puk
+      group-id: puk.1
+  producers:
+    ms-qr-receipt:
+      topic: muk
+
+event.kafka:
+  enabled: false
+  bootstrap-servers: kuk
+  user: kek
+  password: kek
+  producers:
+    common:
+      params.security.protocol: SASL_SSL
+  consumers:
+    common:
+      params.security.protocol: SASL_SSL
+
+logbook:
+  format:
+    style: http
+  exclude:
+    - /swagger**
+    - /v3/api-docs
+
+rate-limits:
+  example:
+    create-user: 10
+
+jdbc:
+  datasource-proxy:
+    enabled: false
+
+cache.settings:
+  default:
+    expire-after-minutes: 10
+    initialCapacity: 10
+    maximumSize: 1000
+    reserveExpireAfterMinutes: 1440

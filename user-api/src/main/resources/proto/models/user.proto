@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package ru.mai.user.proto;
+
+message CreateUserRequest {
+  optional string name = 1;
+  optional string email = 2;
+  optional string phone = 3;
+  optional string password = 4;
+}
+
+message CreateUserResponse {
+  optional int64 id = 1;
+}
+
+message GetUserDataRequest {
+  optional int64 id = 1;
+}
+
+message GetUserDataResponse {
+  optional int64 id = 1;
+  optional string name = 2;
+  optional string email = 3;
+  optional string phone = 4;
+  optional string password = 5;
+}
