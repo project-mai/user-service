@@ -1,12 +1,14 @@
 server:
   shutdown: graceful
-  grpc:
-    server:
-      port: 9090
-    client:
-      analytic:
-        address: dns://localhost:9091
-        negotiation-type: plaintext
+
+grpc:
+  server:
+    port: 9090
+  client:
+    analytic:
+      address: dns://localhost:9091
+      negotiation-type: plaintext
+
 
 spring:
 
