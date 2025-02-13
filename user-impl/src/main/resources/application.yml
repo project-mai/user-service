@@ -6,7 +6,7 @@ grpc:
     port: 9090
   client:
     analytic:
-      address: dns://localhost:9091
+      address: dns:///localhost:9091
       negotiation-type: plaintext
 
 
