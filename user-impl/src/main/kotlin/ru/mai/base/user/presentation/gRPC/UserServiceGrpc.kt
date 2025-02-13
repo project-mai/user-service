@@ -1,8 +1,8 @@
 package ru.mai.base.user.presentation.gRPC
 
 import io.grpc.stub.StreamObserver
+import net.devh.boot.grpc.server.service.GrpcService
 import org.apache.logging.log4j.kotlin.Logging
-import org.springframework.grpc.server.service.GrpcService
 import ru.mai.user.proto.User
 import ru.mai.user.proto.UserServiceGrpc
 

@@ -1,15 +1,15 @@
 server:
   shutdown: graceful
-
-spring:
   grpc:
     server:
-      port:
-        9090
+      port: 9090
     client:
       analytic:
         address: dns://localhost:9091
         negotiation-type: plaintext
+
+spring:
+
   application.name: mai-user
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
