@@ -1,4 +1,4 @@
-package ru.mai.user.utils
+package ru.mai.base.user.utils
 
 import com.google.protobuf.Timestamp
 import com.google.type.Decimal

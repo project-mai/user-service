@@ -13,6 +13,13 @@ class UserServiceGrpc : UserServiceGrpc.UserServiceImplBase(), Logging {
         responseObserver: StreamObserver<User.CreateUserResponse>?
     ) {
         logger.info { "Create user request: $request" }
+
+        responseObserver?.onNext(
+            User.CreateUserResponse.newBuilder()
+                .setId(1)
+                .build()
+        )
+        responseObserver?.onCompleted()
     }
 
     override fun getUserData(

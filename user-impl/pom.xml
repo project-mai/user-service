@@ -298,7 +298,7 @@
                                         <target>
                                             <packageName>ru.mai.user.jooq
                                             </packageName>
-                                            <directory>src/generated/kotlin</directory>
+                                            <directory>src/main/kotlin</directory>
                                         </target>
                                         <generate>
                                             <javaTimeTypes>true</javaTimeTypes>
