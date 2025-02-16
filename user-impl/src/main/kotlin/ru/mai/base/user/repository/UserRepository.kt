@@ -1,3 +1,4 @@
+/*
 package ru.mai.base.user.repository
 
 import org.apache.logging.log4j.kotlin.Logging
@@ -19,4 +20,4 @@ class UserRepository(
         )
         .limit(1)
         .fetchLazy()
-}
+}*/
