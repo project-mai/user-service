@@ -1,0 +1,4 @@
+kafka:
+  user:
+    username: admin
+    password: admin-secret
